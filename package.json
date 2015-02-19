@@ -9,12 +9,14 @@
     "cli",
     "nu"
   ],
+  "repository": "dominicbarnes/nu-html-checker-cli",
   "main": "lib/index.js",
   "bin": "bin/cli",
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^0.5.1",
     "clone": "^1.0.0",
+    "commander": "^2.6.0",
     "is-url": "^1.2.0",
     "superagent": "^0.21.0",
     "text-table": "^0.2.0"
