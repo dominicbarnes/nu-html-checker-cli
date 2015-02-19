@@ -21,7 +21,7 @@ describe('nu-html-checker', function () {
       });
 
       it('should generate the right JSON', function (done) {
-        exec('../../../bin/cli -f json input.html', o, function (err, stdout) {
+        exec('../../../bin/cli -f json input.html', o, function (err, stdout, stderr) {
           if (err) return done(err);
           var expected = read(fixture(name, 'expected.json'), 'utf8');
           assert.equal(stdout.trim(), expected.trim());
