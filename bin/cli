@@ -24,18 +24,40 @@ program
 
 var batch = checker.validate(program.args, program.opts());
 
-batch.on('progress', function (e) {
-  var data = checker.format(program.formatter, e.value);
-  process.stdout.write(data);
-  process.stdout.write('\n\n');
-});
+switch (program.formatter) {
+case 'stylish':
+  batch
+    .on('progress', function (e) {
+      var data = checker.format(program.formatter, e.value);
+      process.stdout.write(data);
+      process.stdout.write('\n\n');
+    })
+    .end(function (err) {
+    if (err) {
+      process.stderr.write(error(err));
+      process.stderr.write('\n\n');
+    }
+  });
+  break;
 
-batch.end(function (err) {
-  if (err) {
-    process.stderr.write(error(err));
-    process.stderr.write('\n\n');
-  }
-});
+case 'json':
+  batch
+    .throws(false)
+    .end(function (errors, results) {
+      if (errors && errors.length) {
+        errors.forEach(function (err) {
+          if (err) {
+            process.stderr.write(error(err));
+            process.stderr.write('\n\n');
+          }
+        })
+      }
+
+      process.stdout.write(checker.format(program.formatter, results));
+      process.stdout.write('\n\n');
+    });
+  break;
+}
 
 /**
  * Format an error message.
