@@ -1,6 +1,6 @@
 {
   "name": "nu-html-checker",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A CLI interface for the Nu HTML Checker (https://validator.nu/)",
   "author": "Dominic Barnes <dominic@dbarnes.info>",
   "keywords": [
