@@ -1,6 +1,6 @@
 {
   "name": "nu-html-checker",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A CLI interface for the Nu HTML Checker (https://validator.nu/)",
   "author": "Dominic Barnes <dominic@dbarnes.info>",
   "keywords": [
@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "bin": "bin/cli",
   "dependencies": {
-    "async": "^0.9.0",
+    "batch": "^0.5.2",
     "chalk": "^0.5.1",
     "clone": "^1.0.0",
     "commander": "^2.6.0",
