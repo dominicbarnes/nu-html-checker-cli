@@ -12,7 +12,8 @@ var validate = require('..');
 
 program
   .version(pkg.version)
-  .option('-f, --formatter <formatter>', 'Choose the formatter to use.', 'stylish')
+  .usage('[options] <files/urls ...>')
+  .option('-f, --formatter <formatter>', 'Choose the formatter to use. (stylish, json)', 'stylish')
   .parse(process.argv);
 
 /**
