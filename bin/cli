@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+var format = require('../lib/formatters');
+var pkg = require('../package.json');
+var program = require('commander');
+var validate = require('..');
+
+/**
+ * CLI configuration.
+ */
+
+program
+  .version(pkg.version)
+  .option('-f, --formatter <formatter>', 'Choose the formatter to use.', 'stylish')
+  .parse(process.argv);
+
+/**
+ * Run the validator.
+ */
+
+validate(program.args, program.opts(), function (err, results) {
+  if (err) {
+    process.stderr.write(error(err));
+  } else {
+    process.stdout.write(format(program.formatter, results));
+  }
+});
+
+/**
+ * Format an error message.
+ *
+ * @param {Error} err
+ * @returns {String}
+ */
+
+function error(err) {
+  return chalk.red(err.stack);
+}

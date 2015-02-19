@@ -1,0 +1,32 @@
+{
+  "name": "nu-html-checker",
+  "version": "0.0.0",
+  "description": "A CLI interface for the Nu HTML Checker (https://validator.nu/)",
+  "author": "Dominic Barnes <dominic@dbarnes.info>",
+  "keywords": [
+    "html",
+    "validator",
+    "cli",
+    "nu"
+  ],
+  "main": "lib/index.js",
+  "bin": "bin/cli",
+  "dependencies": {
+    "async": "^0.9.0",
+    "chalk": "^0.5.1",
+    "clone": "^1.0.0",
+    "is-url": "^1.2.0",
+    "superagent": "^0.21.0",
+    "text-table": "^0.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^0.14.1",
+    "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "clean": "rm -f npm-debug.log",
+    "distclean": "rm -rf node_modules",
+    "lint": "eslint .",
+    "test": "mocha"
+  }
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "messages": [
+      {
+        "type": "error",
+        "lastLine": 8,
+        "lastColumn": 16,
+        "firstColumn": 5,
+        "message": "Bad value “” for attribute “src” on element “img”: Must be non-empty.",
+        "extract": "body>\n    <img src=\"\">\n  </b",
+        "hiliteStart": 10,
+        "hiliteLength": 12
+      },
+      {
+        "type": "error",
+        "lastLine": 8,
+        "lastColumn": 16,
+        "firstColumn": 5,
+        "message": "An “img” element must have an “alt” attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.",
+        "extract": "body>\n    <img src=\"\">\n  </b",
+        "hiliteStart": 10,
+        "hiliteLength": 12
+      }
+    ],
+    "path": "input.html"
+  }
+]
