@@ -4,7 +4,7 @@ var chalk = require('chalk');
 var format = require('../lib/formatters');
 var pkg = require('../package.json');
 var program = require('commander');
-var validate = require('..');
+var checker = require('..');
 
 /**
  * CLI configuration.
@@ -13,6 +13,8 @@ var validate = require('..');
 program
   .version(pkg.version)
   .usage('[options] <files/urls ...>')
+  .option('-a, --api <url>', 'Overrides the default API endpoint', 'https://validator.nu/')
+  .option('-c, --concurrency <number>', 'Sets the concurrency of the batch processing', 5)
   .option('-f, --formatter <formatter>', 'Choose the formatter to use. (stylish, json)', 'stylish')
   .parse(process.argv);
 
@@ -20,11 +22,18 @@ program
  * Run the validator.
  */
 
-validate(program.args, program.opts(), function (err, results) {
+var batch = checker.validate(program.args, program.opts());
+
+batch.on('progress', function (e) {
+  var data = checker.format(program.formatter, e.value);
+  process.stdout.write(data);
+  process.stdout.write('\n\n');
+});
+
+batch.end(function (err) {
   if (err) {
     process.stderr.write(error(err));
-  } else {
-    process.stdout.write(format(program.formatter, results));
+    process.stderr.write('\n\n');
   }
 });
 
